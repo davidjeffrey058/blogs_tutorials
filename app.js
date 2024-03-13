@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const blogRoute = require("./routes/blogRoutes");
 const blogApiRoute = require('./routes/blogApiRoutes');
 const Blog = require("./models/blog");
-
+const dbURI = "mongodb+srv://davidjeffrey:fucker200@cluster0.nmreu71.mongodb.net/note-tuts?retryWrites=true&w=majority"
 // ABOUT THE 3RD PARTY PACKAGES
 // - express simplify our connection as compared to raw node.js
 // - mongoose helps in the conection of the mongodb
@@ -12,13 +12,12 @@ const Blog = require("./models/blog");
 //express app
 const app = express();
 const port = process.env.PORT || 3000;
-
 // Connect to mongoDb
-const dbURI =
-  "mongodb+srv://davidjeffrey:fucker200@cluster0.nmreu71.mongodb.net/note-tuts?retryWrites=true&w=majority";
 mongoose
   .connect(dbURI)
-  .then((result) => app.listen(3000))
+  .then((result) => app.listen(port, () => {
+    console.log('Listening at port ' + port);
+  }))
   .catch((err) => console.log(err));
 
 //register view engine

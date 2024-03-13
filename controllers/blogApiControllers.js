@@ -13,16 +13,18 @@ const all_blogs_api = (req, res) => {
 }
 
 const create_post_api = (req, res) => {
-    const blog = new Blog(req.body);
+    res.send(req.body);
+    console.log(req.body);
+    // const blog = new Blog(req.body);
 
-    blog.save()
-        .then((result) => {
-            res.status(200).json(result);
-        })
-        .catch((err) => {
-            console.log(err);
-            res.status(500).json({ error: "Unable to add data" });
-        });
+    // blog.save()
+    //     .then((result) => {
+    //         res.status(200).json(result);
+    //     })
+    //     .catch((err) => {
+    //         console.log(err);
+    //         res.status(500).json({ error: "Unable to add data" });
+    //     });
 }
 
 const single_blog_api = (req, res) => {
